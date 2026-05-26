@@ -58,10 +58,12 @@ class AndroidBluetoothManager(
     private val handler = Handler(Looper.getMainLooper())
 
     // Stops scanning after 10 seconds.
-    private val SCAN_PERIOD: Long = 10000
+    private val SCAN_PERIOD: Long = 10000 // move to common layer? is there a reason that its not same for both platforms
 
     @RequiresPermission(Manifest.permission.BLUETOOTH_SCAN)
     override fun startScanning() {
+        // ToDo check should bluetoothLeScanner be checked if its ready
+
         if (!isScanning) {
             isScanning = true
 
